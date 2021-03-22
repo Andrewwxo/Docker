@@ -9,4 +9,5 @@ COPY my-shop .
 
 EXPOSE 5000   #hint to forward the port
 
+
 CMD python app.py
