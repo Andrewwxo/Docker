@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Product add
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+     <div class="col col-12 col-md-8 col-lg-6">
+      <form method="post">
+        <div class="mb-3">
+          <label
+            for="product-name-id"
+            class="form-label"
+          >Product name:</label>
+            <input
+            type="text"
+            class="form-control"
+            name="product-name"
+            id="product-name-id"
+            placeholder="Chiken"
+            aria-describedby="product-name-help"
+            >
+          <div id="product-name-help" class="form-text">New product to show on products list</div>
+        </div>
+
+        <div class="d-grid gap-2 col-6 mx-auto">
+          <button type="submit" class="btn btn-lg btn-outline-primary">Add product</button>
+        </div>
+      </form>
+     </div>
+    </div>
+
+    <div class="my-3 col">
+        <div class="alert alert-info" role="alert">
+        Add a product to the basket.
+        </div>
+    </div>
+  <h1> Product <code>{{ product_name }}</code></h1>
+  <a href="{{ url_for('product_app.list') }}"> Back to products list</a>
+{% endblock %}
