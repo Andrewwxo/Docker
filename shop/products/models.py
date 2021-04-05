@@ -18,7 +18,7 @@ class Kind(models.Model):
     def __str__(self):
         return self.name
 
-class Wight(models.Model):
+class Weight(models.Model):
     name = models.IntegerField()
     kind = models.ForeignKey(Kind, on_delete=models.CASCADE)
 
