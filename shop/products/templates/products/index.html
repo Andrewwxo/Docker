@@ -1,17 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% block title %}
+    Главная
+{% endblock %}
+
+{% block container %}
 <h1> {{ shop_name }}</h1>
-<ul>
-    {% for item in products %}
-       <li>
-           {{ item }}
+<ul class="list-group">
+    {% for item in object_list %}
+       <li class="list-group-item">
+            <img src="{{item.kind.image.url}}" width="100px" alt="">
+           ({{ item.kind.name }}{{ item.kind.product.name }}) <a href="/product/{{ item.pk }}/">{{ item.name }}</a>
        </li>
     {% endfor %}
+
+    <hr>
+    <form method="post">
+        {% csrf_token %}
+        <button class="btn btn-primary" type="submit">Сохранить</button>
+    </form>
 </ul>
-</body>
-</html>
+{% endblock %}

@@ -1,8 +1,22 @@
 from django.shortcuts import render
 from .models import Product
+from .tasks import save_products
+from django.views.generic import ListView, TemplateView, DetailView, FormView
 
 
-# Create your views here.
+class ProductListView(ListView):
+    model = Product
+    template_name = 'products/index.html'
+
+
+class AboutTemplateView(TemplateView):
+    template_name = 'products/about.html'
+
+
+class ProductDetailView(DetailView):
+    model = Product
+    template_name = 'products/product.html'
+
 
 def index_view(request):
     products = Product.objects.all()
@@ -10,4 +24,8 @@ def index_view(request):
         'products': products,
         'shop_name': 'Доставка продуктов'
     }
-    return render(request, 'products\index.html', context=context)
+
+    if request.method == "POST":
+        save_products.delay()
+
+    return render(request, 'products/index.html', context=context)

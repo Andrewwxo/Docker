@@ -15,12 +15,22 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from products.views import index_view
+from products.views import index_view, ProductListView, AboutTemplateView, ProductDetailView
 import debug_toolbar
+from django.conf import settings
+from django.conf.urls.static import static
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', index_view),
+    # path('', index_view),
+    path('', ProductListView.as_view()),
+    path('about/', AboutTemplateView.as_view()),
+    path('product/', index_view),
+    path('product/<int:pk>/', ProductDetailView.as_view),
     path('__debug__/', include(debug_toolbar.urls))
 ]
+
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
