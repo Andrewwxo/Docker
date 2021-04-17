@@ -8,15 +8,15 @@
 <ul class="list-group">
     {% for item in object_list %}
        <li class="list-group-item">
-            <img src="{{item.kind.image.url}}" width="100px" alt="">
+           <img src="{{item.kind.image.url}}" width="100px" alt="">
            ({{ item.kind.name }}{{ item.kind.product.name }}) <a href="/product/{{ item.pk }}/">{{ item.name }}</a>
        </li>
     {% endfor %}
 
-    <hr>
-    <form method="post">
-        {% csrf_token %}
-        <button class="btn btn-primary" type="submit">Сохранить</button>
-    </form>
+{#    <hr>#}
+{#    <form method="post">#}
+{#        {% csrf_token %}#}
+{#        <button class="btn btn-primary" type="submit">Сохранить</button>#}
+{#    </form>#}
 </ul>
 {% endblock %}

@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}
+    Главная
+{% endblock %}
+
+{% block container %}
+<h1> Отправте на сообщение </h1>
+<form method="post">
+    {% csrf_token %}
+    {{ forms.as_p }}
+    <button class="btn btn-primary" type="submit">Отправить</button>
+</form>
+{% endblock %}

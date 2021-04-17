@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from products.views import index_view, ProductListView, AboutTemplateView, ProductDetailView
+from products.views import index_view, ProductListView, AboutTemplateView, ProductDetailView, MessageFormView
 import debug_toolbar
 from django.conf import settings
 from django.conf.urls.static import static
@@ -28,6 +28,7 @@ urlpatterns = [
     path('about/', AboutTemplateView.as_view()),
     path('product/', index_view),
     path('product/<int:pk>/', ProductDetailView.as_view),
+    path('message/', MessageFormView.as_view),
     path('__debug__/', include(debug_toolbar.urls))
 ]
 
