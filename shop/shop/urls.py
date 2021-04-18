@@ -27,8 +27,8 @@ urlpatterns = [
     path('', ProductListView.as_view()),
     path('about/', AboutTemplateView.as_view()),
     path('product/', index_view),
-    path('product/<int:pk>/', ProductDetailView.as_view),
-    path('message/', MessageFormView.as_view),
+    path('product/<int:pk>/', ProductDetailView.as_view()),
+    path('message/', MessageFormView.as_view()),
     path('__debug__/', include(debug_toolbar.urls))
 ]
 
