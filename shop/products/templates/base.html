@@ -28,6 +28,23 @@
           <a class="nav-link" href="/message/">Отправить нам сообщение</a>
         </li>
 
+        {% if user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link" href="#"> {{ user.username }}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/logout/">Выход</a>
+        </li>
+
+        {% else %}
+        <li class="nav-item">
+          <a class="nav-link" href="/register/">Зарегистрироваться</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/login/">Вход</a>
+        </li>
+        {% endif %}
+
       <form class="d-flex">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>

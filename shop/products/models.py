@@ -6,6 +6,7 @@ from django.db import models
 
 class Product(models.Model):
     name = models.CharField(max_length=32, unique=True)
+    image = models.ImageField(upload_to='product', blank=True, null=True)
 
     def __str__(self):
         return self.name

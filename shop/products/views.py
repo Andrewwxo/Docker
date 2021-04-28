@@ -25,7 +25,11 @@ class MessageFormView(FormView):
     success_url = '/'
 
     def form_valid(self, form):
-        print(form.cleaned_data)
+        data = form.cleaned_data
+        text = data['text']
+        theme = data['theme']
+        email = data['email']
+        send_mail_task.delay(theme, text, email)
         return super().form_valid(form)
 
 

@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'products',
+    'userapp',
     'debug_toolbar'
 ]
 
@@ -141,3 +142,9 @@ CELERY_RESULT_BACKEND = 'rpc:=//'
 # CELERY_TASK_SERIALIZER = 'json'
 
 EMAIL_FILE_PATH = os.path.join(BASE_DIR, 'tmp', 'app-messages')
+
+AUTH_USER_MODEL = 'userapp.MyUser'
+
+LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/login/'
